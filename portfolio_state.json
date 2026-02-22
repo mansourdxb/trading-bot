@@ -1,0 +1,16 @@
+{
+  "position": null,
+  "trade_history": [
+    {
+      "symbol": "ETHUSDT",
+      "buy_price": 1972.71,
+      "quantity": 0.0076,
+      "usdt_used": 15.0,
+      "opened_at": "2026-02-22T12:34:47.025748",
+      "sell_price": 1964.32,
+      "pnl": -0.1011,
+      "reason": "Strategy Signal",
+      "closed_at": "2026-02-22T12:41:38.172209"
+    }
+  ]
+}

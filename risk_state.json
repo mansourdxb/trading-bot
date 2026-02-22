@@ -1,0 +1,10 @@
+{
+  "daily_pnl": -0.1011,
+  "daily_date": "2026-02-22",
+  "max_drawdown_seen": 0.10110000000000241,
+  "peak_equity": 100,
+  "consecutive_losses": 1,
+  "cooldown_until": null,
+  "live_trading_disabled": false,
+  "total_positions": 0
+}

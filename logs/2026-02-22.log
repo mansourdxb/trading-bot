@@ -1,0 +1,157 @@
+[2026-02-22 16:31:10] [Backtester] [INFO] Starting backtest: BTCUSDT 4h | 2000 candles
+[2026-02-22 16:31:11] [Backtester] [INFO] In-sample: 700 candles | Out-of-sample: 300 candles
+[2026-02-22 16:31:12] [Backtester] [INFO] 
+=======================================================
+[2026-02-22 16:31:12] [Backtester] [INFO]   IN-SAMPLE | FAIL: FAIL - Do NOT trade live yet
+[2026-02-22 16:31:12] [Backtester] [INFO] =======================================================
+[2026-02-22 16:31:12] [Backtester] [INFO]   Total Trades:       17
+[2026-02-22 16:31:12] [Backtester] [INFO]   Wins / Losses:      7 / 10
+[2026-02-22 16:31:12] [Backtester] [INFO]   Win Rate:           41.2%
+[2026-02-22 16:31:12] [Backtester] [INFO]   Profit Factor:      1.28
+[2026-02-22 16:31:12] [Backtester] [INFO]   Total Return:       +0.65%
+[2026-02-22 16:31:12] [Backtester] [INFO]   Max Drawdown:       1.09%
+[2026-02-22 16:31:12] [Backtester] [INFO]   Expectancy/trade:   $+0.04
+[2026-02-22 16:31:12] [Backtester] [INFO]   Fees Paid:          $0.51
+[2026-02-22 16:31:12] [Backtester] [INFO]   Avg Hold (candles): 6.6
+[2026-02-22 16:31:12] [Backtester] [INFO]   Final Capital:      $100.65
+[2026-02-22 16:31:12] [Backtester] [INFO] =======================================================
+[2026-02-22 16:31:12] [Backtester] [WARNING] Strategy did not meet minimum criteria. Review before proceeding.
+[2026-02-22 16:31:12] [Backtester] [INFO] 
+=======================================================
+[2026-02-22 16:31:12] [Backtester] [INFO]   OUT-OF-SAMPLE | FAIL: FAIL - Do NOT trade live yet
+[2026-02-22 16:31:12] [Backtester] [INFO] =======================================================
+[2026-02-22 16:31:12] [Backtester] [INFO]   Total Trades:       5
+[2026-02-22 16:31:12] [Backtester] [INFO]   Wins / Losses:      0 / 5
+[2026-02-22 16:31:12] [Backtester] [INFO]   Win Rate:           0.0%
+[2026-02-22 16:31:12] [Backtester] [INFO]   Profit Factor:      0.0
+[2026-02-22 16:31:12] [Backtester] [INFO]   Total Return:       -1.10%
+[2026-02-22 16:31:12] [Backtester] [INFO]   Max Drawdown:       1.10%
+[2026-02-22 16:31:12] [Backtester] [INFO]   Expectancy/trade:   $-0.22
+[2026-02-22 16:31:12] [Backtester] [INFO]   Fees Paid:          $0.16
+[2026-02-22 16:31:12] [Backtester] [INFO]   Avg Hold (candles): 5.0
+[2026-02-22 16:31:12] [Backtester] [INFO]   Final Capital:      $98.90
+[2026-02-22 16:31:12] [Backtester] [INFO] =======================================================
+[2026-02-22 16:31:12] [Backtester] [WARNING] Strategy did not meet minimum criteria. Review before proceeding.
+[2026-02-22 16:31:12] [Backtester] [INFO] Walk-forward validation complete
+[2026-02-22 16:31:12] [Backtester] [WARNING] Strategy underperforms on out-of-sample data - review before going live
+[2026-02-22 16:34:38] [PaperEngine] [INFO] =======================================================
+[2026-02-22 16:34:38] [PaperEngine] [INFO] PAPER TRADING ENGINE STARTED
+[2026-02-22 16:34:38] [PaperEngine] [INFO] Pair: ETHUSDT | Timeframe: 4h
+[2026-02-22 16:34:38] [PaperEngine] [INFO] No real money is used in this mode.
+[2026-02-22 16:34:38] [PaperEngine] [INFO] =======================================================
+[2026-02-22 16:34:43] [PaperEngine] [INFO] Price: $1,972.70 | Signal: BUY | Confidence: 0.60 | RSI: 49.8
+[2026-02-22 16:34:43] [RiskManager] [INFO] Pre-trade checks PASSED | Amount: $15.00 | Confidence: 0.60
+[2026-02-22 16:34:47] [OrderExecutor] [INFO] [PAPER] BUY 0.0076 ETHUSDT @ $1,972.71 | USDT: $15.00 | Est. fees: $0.037
+[2026-02-22 16:34:47] [PortfolioManager] [INFO] Position opened: 0.0076 ETHUSDT @ $1,972.71
+[2026-02-22 16:34:47] [PaperEngine] [INFO] Sleeping 4h...
+[2026-02-22 16:38:30] [PaperEngine] [INFO] =======================================================
+[2026-02-22 16:38:30] [PaperEngine] [INFO] PAPER TRADING ENGINE STARTED
+[2026-02-22 16:38:30] [PaperEngine] [INFO] Pair: ETHUSDT | Timeframe: 4h
+[2026-02-22 16:38:30] [PaperEngine] [INFO] No real money is used in this mode.
+[2026-02-22 16:38:30] [PaperEngine] [INFO] =======================================================
+[2026-02-22 16:38:31] [PaperEngine] [INFO] Price: $1,969.94 | Signal: BUY | Confidence: 0.60 | RSI: 49.06
+[2026-02-22 16:38:31] [PaperEngine] [INFO] Sleeping 4h...
+[2026-02-22 16:41:34] [PaperEngine] [INFO] =======================================================
+[2026-02-22 16:41:34] [PaperEngine] [INFO] PAPER TRADING ENGINE STARTED
+[2026-02-22 16:41:34] [PaperEngine] [INFO] Pair: ETHUSDT | Timeframe: 30m
+[2026-02-22 16:41:34] [PaperEngine] [INFO] No real money is used in this mode.
+[2026-02-22 16:41:34] [PaperEngine] [INFO] =======================================================
+[2026-02-22 16:41:36] [PaperEngine] [INFO] Price: $1,964.32 | Signal: SELL | Confidence: 0.80 | RSI: 34.34
+[2026-02-22 16:41:38] [OrderExecutor] [INFO] [PAPER] SELL 0.0076 ETHUSDT @ $1,964.32 | PnL: $-0.10
+[2026-02-22 16:41:38] [RiskManager] [WARNING] Consecutive losses: 1
+[2026-02-22 16:41:38] [RiskManager] [INFO] Trade closed | PnL: $-0.10 | Daily PnL: $-0.10 | Drawdown: 0.10%
+[2026-02-22 16:41:38] [PortfolioManager] [INFO] Position closed | PnL: $-0.10 | Reason: Strategy Signal
+[2026-02-22 16:41:38] [PaperEngine] [INFO] Sleeping 30m...
+[2026-02-22 17:33:23] [PaperEngine] [INFO] =======================================================
+[2026-02-22 17:33:23] [PaperEngine] [INFO] PAPER TRADING ENGINE STARTED
+[2026-02-22 17:33:23] [PaperEngine] [INFO] Pair: ETHUSDT | Timeframe: 10m
+[2026-02-22 17:33:23] [PaperEngine] [INFO] No real money is used in this mode.
+[2026-02-22 17:33:23] [PaperEngine] [INFO] =======================================================
+[2026-02-22 17:33:25] [PaperEngine] [ERROR] Tick error: 400 Client Error: Bad Request for url: https://api.binance.com/api/v3/klines?symbol=ETHUSDT&interval=10m&limit=100
+[2026-02-22 17:34:54] [PaperEngine] [INFO] =======================================================
+[2026-02-22 17:34:54] [PaperEngine] [INFO] PAPER TRADING ENGINE STARTED
+[2026-02-22 17:34:54] [PaperEngine] [INFO] Pair: ETHUSDT | Timeframe: 15m
+[2026-02-22 17:34:54] [PaperEngine] [INFO] No real money is used in this mode.
+[2026-02-22 17:34:54] [PaperEngine] [INFO] =======================================================
+[2026-02-22 17:34:56] [PaperEngine] [INFO] ---- Heartbeat | Price: $1,961.64 | Signal: HOLD | Confidence: 0.00 | RSI: 31.51 | Next check in 15m ----
+[2026-02-22 17:34:56] [PaperEngine] [INFO] Sleeping 15m...
+[2026-02-22 17:49:58] [PaperEngine] [INFO] ---- Heartbeat | Price: $1,949.89 | Signal: HOLD | Confidence: 0.00 | RSI: 25.71 | Next check in 15m ----
+[2026-02-22 17:49:58] [PaperEngine] [INFO] Sleeping 15m...
+[2026-02-22 18:05:00] [PaperEngine] [INFO] ---- Heartbeat | Price: $1,947.65 | Signal: HOLD | Confidence: 0.00 | RSI: 25.24 | Next check in 15m ----
+[2026-02-22 18:05:00] [PaperEngine] [INFO] Sleeping 15m...
+[2026-02-22 18:20:02] [PaperEngine] [INFO] ---- Heartbeat | Price: $1,949.17 | Signal: HOLD | Confidence: 0.00 | RSI: 26.74 | Next check in 15m ----
+[2026-02-22 18:20:02] [PaperEngine] [INFO] Sleeping 15m...
+[2026-02-22 18:41:30] [PaperEngine] [INFO] ---- Heartbeat | Price: $1,951.96 | Signal: HOLD | Confidence: 0.00 | RSI: 30.34 | Next check in 15m ----
+[2026-02-22 18:41:30] [PaperEngine] [INFO] Sleeping 15m...
+[2026-02-22 18:44:09] [Backtester] [INFO] Starting backtest: ETHUSDT 15m | 2000 candles
+[2026-02-22 18:44:11] [Backtester] [INFO] In-sample: 700 candles | Out-of-sample: 300 candles
+[2026-02-22 18:44:15] [Backtester] [INFO] 
+=======================================================
+[2026-02-22 18:44:15] [Backtester] [INFO]   IN-SAMPLE | FAIL: FAIL - Do NOT trade live yet
+[2026-02-22 18:44:15] [Backtester] [INFO] =======================================================
+[2026-02-22 18:44:15] [Backtester] [INFO]   Total Trades:       13
+[2026-02-22 18:44:15] [Backtester] [INFO]   Wins / Losses:      4 / 9
+[2026-02-22 18:44:15] [Backtester] [INFO]   Win Rate:           30.8%
+[2026-02-22 18:44:15] [Backtester] [INFO]   Profit Factor:      0.55
+[2026-02-22 18:44:15] [Backtester] [INFO]   Total Return:       -0.59%
+[2026-02-22 18:44:15] [Backtester] [INFO]   Max Drawdown:       1.04%
+[2026-02-22 18:44:15] [Backtester] [INFO]   Expectancy/trade:   $-0.05
+[2026-02-22 18:44:15] [Backtester] [INFO]   Fees Paid:          $0.39
+[2026-02-22 18:44:15] [Backtester] [INFO]   Avg Hold (candles): 20.1
+[2026-02-22 18:44:15] [Backtester] [INFO]   Final Capital:      $99.41
+[2026-02-22 18:44:15] [Backtester] [INFO] =======================================================
+[2026-02-22 18:44:15] [Backtester] [WARNING] Strategy did not meet minimum criteria. Review before proceeding.
+[2026-02-22 18:44:17] [Backtester] [INFO] 
+=======================================================
+[2026-02-22 18:44:17] [Backtester] [INFO]   OUT-OF-SAMPLE | FAIL: FAIL - Do NOT trade live yet
+[2026-02-22 18:44:17] [Backtester] [INFO] =======================================================
+[2026-02-22 18:44:17] [Backtester] [INFO]   Total Trades:       5
+[2026-02-22 18:44:17] [Backtester] [INFO]   Wins / Losses:      1 / 4
+[2026-02-22 18:44:17] [Backtester] [INFO]   Win Rate:           20.0%
+[2026-02-22 18:44:17] [Backtester] [INFO]   Profit Factor:      0.42
+[2026-02-22 18:44:17] [Backtester] [INFO]   Total Return:       -0.22%
+[2026-02-22 18:44:17] [Backtester] [INFO]   Max Drawdown:       0.22%
+[2026-02-22 18:44:17] [Backtester] [INFO]   Expectancy/trade:   $-0.04
+[2026-02-22 18:44:17] [Backtester] [INFO]   Fees Paid:          $0.15
+[2026-02-22 18:44:17] [Backtester] [INFO]   Avg Hold (candles): 24.8
+[2026-02-22 18:44:17] [Backtester] [INFO]   Final Capital:      $99.78
+[2026-02-22 18:44:17] [Backtester] [INFO] =======================================================
+[2026-02-22 18:44:17] [Backtester] [WARNING] Strategy did not meet minimum criteria. Review before proceeding.
+[2026-02-22 18:44:17] [Backtester] [INFO] Walk-forward validation complete
+[2026-02-22 18:44:17] [Backtester] [WARNING] Strategy underperforms on out-of-sample data - review before going live
+[2026-02-22 18:47:23] [Backtester] [INFO] Starting backtest: ETHUSDT 15m | 2000 candles
+[2026-02-22 18:47:25] [Backtester] [INFO] In-sample: 700 candles | Out-of-sample: 300 candles
+[2026-02-22 18:47:29] [Backtester] [INFO] 
+=======================================================
+[2026-02-22 18:47:29] [Backtester] [INFO]   IN-SAMPLE | FAIL: FAIL - Do NOT trade live yet
+[2026-02-22 18:47:29] [Backtester] [INFO] =======================================================
+[2026-02-22 18:47:29] [Backtester] [INFO]   Total Trades:       13
+[2026-02-22 18:47:29] [Backtester] [INFO]   Wins / Losses:      4 / 9
+[2026-02-22 18:47:29] [Backtester] [INFO]   Win Rate:           30.8%
+[2026-02-22 18:47:29] [Backtester] [INFO]   Profit Factor:      0.55
+[2026-02-22 18:47:29] [Backtester] [INFO]   Total Return:       -0.59%
+[2026-02-22 18:47:29] [Backtester] [INFO]   Max Drawdown:       1.04%
+[2026-02-22 18:47:29] [Backtester] [INFO]   Expectancy/trade:   $-0.05
+[2026-02-22 18:47:29] [Backtester] [INFO]   Fees Paid:          $0.39
+[2026-02-22 18:47:29] [Backtester] [INFO]   Avg Hold (candles): 20.1
+[2026-02-22 18:47:29] [Backtester] [INFO]   Final Capital:      $99.41
+[2026-02-22 18:47:29] [Backtester] [INFO] =======================================================
+[2026-02-22 18:47:29] [Backtester] [WARNING] Strategy did not meet minimum criteria. Review before proceeding.
+[2026-02-22 18:47:31] [Backtester] [INFO] 
+=======================================================
+[2026-02-22 18:47:31] [Backtester] [INFO]   OUT-OF-SAMPLE | FAIL: FAIL - Do NOT trade live yet
+[2026-02-22 18:47:31] [Backtester] [INFO] =======================================================
+[2026-02-22 18:47:31] [Backtester] [INFO]   Total Trades:       5
+[2026-02-22 18:47:31] [Backtester] [INFO]   Wins / Losses:      1 / 4
+[2026-02-22 18:47:31] [Backtester] [INFO]   Win Rate:           20.0%
+[2026-02-22 18:47:31] [Backtester] [INFO]   Profit Factor:      0.42
+[2026-02-22 18:47:31] [Backtester] [INFO]   Total Return:       -0.22%
+[2026-02-22 18:47:31] [Backtester] [INFO]   Max Drawdown:       0.22%
+[2026-02-22 18:47:31] [Backtester] [INFO]   Expectancy/trade:   $-0.04
+[2026-02-22 18:47:31] [Backtester] [INFO]   Fees Paid:          $0.15
+[2026-02-22 18:47:31] [Backtester] [INFO]   Avg Hold (candles): 24.8
+[2026-02-22 18:47:31] [Backtester] [INFO]   Final Capital:      $99.78
+[2026-02-22 18:47:31] [Backtester] [INFO] =======================================================
+[2026-02-22 18:47:31] [Backtester] [WARNING] Strategy did not meet minimum criteria. Review before proceeding.
+[2026-02-22 18:47:31] [Backtester] [INFO] Walk-forward validation complete
+[2026-02-22 18:47:31] [Backtester] [WARNING] Strategy underperforms on out-of-sample data - review before going live
