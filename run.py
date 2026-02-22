@@ -1,7 +1,7 @@
 """
 Trading Bot Entry Point
 =======================
-⚠️ DISCLAIMER: Trading involves risk. Profits are NOT guaranteed.
+WARNING: Trading involves risk. Profits are NOT guaranteed.
 This bot can lose money. Never invest more than you can afford to lose entirely.
 
 Usage:
@@ -14,17 +14,24 @@ import sys
 import os
 from dotenv import load_dotenv
 
-load_dotenv()  # Load .env file
+load_dotenv()
+
+# Print Railway server IP on startup (for Binance IP whitelist)
+try:
+    import requests as _r
+    _ip = _r.get("https://api.ipify.org", timeout=5).text
+    print(f"SERVER_IP: {_ip}")
+except Exception:
+    print("SERVER_IP: Could not detect")
 
 def main():
-    parser = argparse.ArgumentParser(description="Binance Trading Bot — Safety First")
+    parser = argparse.ArgumentParser(description="Binance Trading Bot - Safety First")
     parser.add_argument("--backtest", action="store_true", help="Run backtest on historical data")
     parser.add_argument("--paper", action="store_true", help="Run paper trading (default, no real money)")
     parser.add_argument("--live", action="store_true", help="Run live trading (real money)")
     parser.add_argument("--i-understand-risks", action="store_true", help="Required confirmation for live mode")
     args = parser.parse_args()
 
-    # Default to paper if no mode specified
     if not args.backtest and not args.paper and not args.live:
         args.paper = True
 
@@ -41,7 +48,7 @@ def main():
 
     elif args.paper:
         print("\n" + "="*55)
-        print("  PAPER TRADING MODE — No real money used")
+        print("  PAPER TRADING MODE - No real money used")
         print("="*55)
         from src.paper.paper_engine import PaperEngine
         engine = PaperEngine()
@@ -49,15 +56,15 @@ def main():
 
     elif args.live:
         if not args.i_understand_risks:
-            print("\n❌ LIVE MODE BLOCKED")
+            print("\nLIVE MODE BLOCKED")
             print("You must explicitly acknowledge risks to trade live.")
             print("Run with: python run.py --live --i-understand-risks")
-            print("\n⚠️  WARNING: Live trading uses REAL money.")
-            print("⚠️  Profits are NOT guaranteed. You can lose your capital.")
+            print("\nWARNING: Live trading uses REAL money.")
+            print("WARNING: Profits are NOT guaranteed. You can lose your capital.")
             sys.exit(1)
 
         print("\n" + "="*55)
-        print("  ⚠️  LIVE TRADING MODE — REAL MONEY")
+        print("  WARNING: LIVE TRADING MODE - REAL MONEY")
         print("  Profits are NOT guaranteed.")
         print("  Set KILL_SWITCH=true in .env to stop instantly.")
         print("="*55)
