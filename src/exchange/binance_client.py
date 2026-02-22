@@ -6,7 +6,14 @@ import requests
 import pandas as pd
 from datetime import datetime
 
-BASE_URL = "https://api.binance.vision"
+# Try multiple endpoints in order until one works
+BASE_URLS = [
+    "https://api.binance.com",
+    "https://api1.binance.com",
+    "https://api2.binance.com",
+    "https://api3.binance.com",
+    "https://api4.binance.com",
+]
 
 class BinanceClient:
     def __init__(self):
@@ -16,8 +23,18 @@ class BinanceClient:
         if not self.api_key or not self.secret_key:
             raise EnvironmentError("BINANCE_API_KEY and BINANCE_SECRET_KEY must be set in .env")
 
-        self._last_price_time = {}
-        self._last_price = {}
+        self.base_url = self._find_working_endpoint()
+
+    def _find_working_endpoint(self) -> str:
+        for url in BASE_URLS:
+            try:
+                r = requests.get(f"{url}/api/v3/ping", timeout=5)
+                if r.status_code == 200:
+                    print(f"Connected to Binance via: {url}")
+                    return url
+            except Exception:
+                continue
+        raise ConnectionError("All Binance endpoints are unreachable from this server. Check your network/region.")
 
     def _sign(self, params: dict) -> str:
         query = "&".join([f"{k}={v}" for k, v in params.items()])
@@ -33,7 +50,7 @@ class BinanceClient:
             params["timestamp"] = int(time.time() * 1000)
             params["signature"] = self._sign(params)
         try:
-            r = requests.get(f"{BASE_URL}{endpoint}", headers=self._headers(), params=params, timeout=timeout)
+            r = requests.get(f"{self.base_url}{endpoint}", headers=self._headers(), params=params, timeout=timeout)
             r.raise_for_status()
             return r.json()
         except requests.exceptions.Timeout:
@@ -45,7 +62,7 @@ class BinanceClient:
         params["timestamp"] = int(time.time() * 1000)
         params["signature"] = self._sign(params)
         try:
-            r = requests.post(f"{BASE_URL}{endpoint}", headers=self._headers(), params=params, timeout=timeout)
+            r = requests.post(f"{self.base_url}{endpoint}", headers=self._headers(), params=params, timeout=timeout)
             r.raise_for_status()
             return r.json()
         except requests.exceptions.Timeout:
@@ -63,14 +80,9 @@ class BinanceClient:
         df["timestamp"] = pd.to_datetime(df["timestamp"], unit="ms")
         return df
 
-    def get_price(self, symbol: str) -> tuple[float, datetime]:
-        """Returns (price, timestamp). Raises if price is stale."""
+    def get_price(self, symbol: str) -> tuple:
         data = self._get("/api/v3/ticker/price", {"symbol": symbol})
-        price = float(data["price"])
-        ts = datetime.utcnow()
-        self._last_price[symbol] = price
-        self._last_price_time[symbol] = ts
-        return price, ts
+        return float(data["price"]), datetime.utcnow()
 
     def get_orderbook(self, symbol: str) -> dict:
         return self._get("/api/v3/depth", {"symbol": symbol, "limit": 5})
@@ -104,33 +116,23 @@ class BinanceClient:
         return 10.0
 
     def place_market_buy(self, symbol: str, quantity: float, client_order_id: str) -> dict:
-        """Place market buy with idempotency via clientOrderId"""
         params = {
-            "symbol": symbol,
-            "side": "BUY",
-            "type": "MARKET",
-            "quantity": quantity,
-            "newClientOrderId": client_order_id,
+            "symbol": symbol, "side": "BUY", "type": "MARKET",
+            "quantity": quantity, "newClientOrderId": client_order_id,
         }
         return self._post("/api/v3/order", params)
 
     def place_market_sell(self, symbol: str, quantity: float, client_order_id: str) -> dict:
-        """Place market sell with idempotency via clientOrderId"""
         params = {
-            "symbol": symbol,
-            "side": "SELL",
-            "type": "MARKET",
-            "quantity": quantity,
-            "newClientOrderId": client_order_id,
+            "symbol": symbol, "side": "SELL", "type": "MARKET",
+            "quantity": quantity, "newClientOrderId": client_order_id,
         }
         return self._post("/api/v3/order", params)
 
     def get_order(self, symbol: str, client_order_id: str) -> dict:
-        """Check if an order already exists (idempotency check)"""
         try:
             return self._get("/api/v3/order", {
-                "symbol": symbol,
-                "origClientOrderId": client_order_id
+                "symbol": symbol, "origClientOrderId": client_order_id
             }, signed=True)
         except Exception:
             return {}
