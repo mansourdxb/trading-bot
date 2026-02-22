@@ -6,7 +6,7 @@ import requests
 import pandas as pd
 from datetime import datetime
 
-BASE_URL = "https://api.binance.com"
+BASE_URL = "https://api1.binance.com"
 
 class BinanceClient:
     def __init__(self):
