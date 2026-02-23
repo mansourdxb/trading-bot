@@ -9,16 +9,20 @@ def _send(message: str):
     token = os.getenv("TELEGRAM_TOKEN", "")
     chat_id = os.getenv("TELEGRAM_CHAT_ID", "")
     if not token or not chat_id:
-        logger.warning("Telegram not configured — alert not sent")
+        logger.warning("Telegram not configured — TELEGRAM_TOKEN or TELEGRAM_CHAT_ID missing")
         return
     try:
-        requests.post(
+        r = requests.post(
             f"https://api.telegram.org/bot{token}/sendMessage",
             json={"chat_id": chat_id, "text": message, "parse_mode": "HTML"},
             timeout=10
         )
+        if r.status_code == 200:
+            logger.info("Telegram alert sent OK")
+        else:
+            logger.error(f"Telegram alert FAILED: {r.status_code} - {r.text}")
     except Exception as e:
-        logger.error(f"Telegram alert failed: {e}")
+        logger.error(f"Telegram alert exception: {e}")
 
 def alert_startup(mode: str, pair: str, capital: float):
     _send(f"🤖 <b>Bot Started</b>\nMode: <b>{mode.upper()}</b>\nPair: {pair}\nCapital: ${capital}\nTime: {datetime.utcnow().strftime('%Y-%m-%d %H:%M')} UTC")
