@@ -6,7 +6,8 @@ from src.monitoring.logger import get_logger
 
 logger = get_logger("RiskManager")
 
-STATE_FILE = "risk_state.json"
+_DATA_DIR = "/data" if os.path.exists("/data") else "."
+STATE_FILE = os.path.join(_DATA_DIR, "risk_state.json")
 
 class RiskManager:
     """

@@ -4,21 +4,35 @@ from datetime import datetime
 from src.monitoring.logger import get_logger
 
 logger = get_logger("PortfolioManager")
-PORTFOLIO_FILE = "portfolio_state.json"
+
+# Use /data volume on Railway (persistent), fallback to local for dev
+_DATA_DIR = "/data" if os.path.exists("/data") else "."
+PORTFOLIO_FILE = os.path.join(_DATA_DIR, "portfolio_state.json")
 
 class PortfolioManager:
     def __init__(self):
+        logger.info(f"Portfolio state file: {PORTFOLIO_FILE}")
         self.state = self._load()
 
     def _load(self) -> dict:
         if os.path.exists(PORTFOLIO_FILE):
-            with open(PORTFOLIO_FILE) as f:
-                return json.load(f)
+            try:
+                with open(PORTFOLIO_FILE) as f:
+                    data = json.load(f)
+                    if data.get("position"):
+                        pos = data["position"]
+                        logger.info(f"Restored open position: {pos['quantity']} {pos['symbol']} @ ${pos['buy_price']:,.2f}")
+                    return data
+            except Exception as e:
+                logger.error(f"Failed to load portfolio state: {e} — starting fresh")
         return {"position": None, "trade_history": []}
 
     def _save(self):
-        with open(PORTFOLIO_FILE, "w") as f:
-            json.dump(self.state, f, indent=2, default=str)
+        try:
+            with open(PORTFOLIO_FILE, "w") as f:
+                json.dump(self.state, f, indent=2, default=str)
+        except Exception as e:
+            logger.error(f"Failed to save portfolio state: {e}")
 
     def has_position(self) -> bool:
         return self.state["position"] is not None
