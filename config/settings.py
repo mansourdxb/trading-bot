@@ -2,23 +2,23 @@ RISK = {
     "risk_per_trade_pct": 15.0,
     "max_total_exposure_pct": 50.0,
     "max_concurrent_positions": 1,
-    "daily_loss_cap_pct": 2.0,
+    "daily_loss_cap_pct": 3.0,        # raised from 2.0 — allows more daily trades
     "max_drawdown_cap_pct": 8.0,
     "consecutive_loss_limit": 3,
-    "cooldown_minutes": 120,
+    "cooldown_minutes": 30,           # lowered from 120 — faster re-entry
     "min_signal_confidence": 0.55,
     "max_spread_pct": 0.5,
     "stale_price_seconds": 30,
     "stop_loss_pct": 1.5,
-    "take_profit_pct": 3.0,
-    "max_holding_hours": 48,
+    "take_profit_pct": 2.5,           # lowered from 3.0 — easier to hit TP
+    "max_holding_hours": 12,          # lowered from 48 — exits faster
     "fee_pct": 0.1,
     "slippage_estimate_pct": 0.05,
 }
 
 TRADING = {
     "pair": "ETHUSDT",
-    "timeframe": "15m",
+    "timeframe": "15m",              # changed from 4h — 96 candles/day vs 6
     "capital_limit_usdt": 100,
     "min_order_usdt": 5,
 }

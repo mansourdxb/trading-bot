@@ -64,31 +64,50 @@ def analyze(df):
         "price": round(price, 2)
     }
 
-    if atr_pct < 0.03:
+    if atr_pct < 0.02:  # lowered from 0.03
         return SignalResult("HOLD", 0.0, "Volatility too low", indicators)
 
-    uptrend   = ef1 > es1
-    downtrend = ef1 < es1
+    uptrend        = ef1 > es1
+    downtrend      = ef1 < es1
     ema_cross_up   = ef2 <= es2 and ef1 > es1
     ema_cross_down = ef2 >= es2 and ef1 < es1
-    macd_bullish    = ml1 > ms1
-    macd_bearish    = ml1 < ms1
-    macd_cross_up   = ml2 <= ms2 and ml1 > ms1
-    macd_cross_down = ml2 >= ms2 and ml1 < ms1
-    rsi_ok_buy  = r < STRATEGY["rsi_overbought"]
-    rsi_ok_sell = r > STRATEGY["rsi_oversold"]
+    macd_bullish   = ml1 > ms1
+    macd_bearish   = ml1 < ms1
+    macd_cross_up  = ml2 <= ms2 and ml1 > ms1
+    macd_cross_down= ml2 >= ms2 and ml1 < ms1
+    rsi_ok_buy     = r < STRATEGY["rsi_overbought"]   # < 70
+    rsi_ok_sell    = r > STRATEGY["rsi_oversold"]      # > 30
 
+    # --- STRONG BUY signals (0.80) ---
     if ema_cross_up and rsi_ok_buy and macd_bullish:
         return SignalResult("BUY", 0.80, "EMA cross up + MACD bullish", indicators)
-    if uptrend and r < 45 and macd_cross_up:
-        return SignalResult("BUY", 0.65, "Uptrend + RSI dip + MACD cross up", indicators)
-    if uptrend and rsi_ok_buy and macd_bullish and r < 50:
-        return SignalResult("BUY", 0.60, "Uptrend + RSI low + MACD bullish", indicators)
+
+    # --- MEDIUM BUY signals (0.65) ---
+    if uptrend and macd_cross_up and r < 60:
+        return SignalResult("BUY", 0.65, "Uptrend + MACD cross up", indicators)
+    if macd_cross_up and r < 45:                      # NEW: oversold bounce
+        return SignalResult("BUY", 0.65, "Oversold MACD cross up", indicators)
+
+    # --- RELAXED BUY signals (0.60) ---
+    if uptrend and macd_bullish and r < 55:           # was r < 50
+        return SignalResult("BUY", 0.60, "Uptrend + MACD bullish", indicators)
+    if macd_bullish and r < 35 and not downtrend:     # NEW: deep oversold
+        return SignalResult("BUY", 0.60, "Deep oversold + MACD bullish", indicators)
+
+    # --- STRONG SELL signals (0.80) ---
     if ema_cross_down and rsi_ok_sell and macd_bearish:
         return SignalResult("SELL", 0.80, "EMA cross down + MACD bearish", indicators)
-    if downtrend and r > 55 and macd_cross_down:
-        return SignalResult("SELL", 0.65, "Downtrend + RSI high + MACD cross down", indicators)
-    if downtrend and rsi_ok_sell and macd_bearish and r > 50:
-        return SignalResult("SELL", 0.60, "Downtrend + RSI high + MACD bearish", indicators)
+
+    # --- MEDIUM SELL signals (0.65) ---
+    if downtrend and macd_cross_down and r > 40:
+        return SignalResult("SELL", 0.65, "Downtrend + MACD cross down", indicators)
+    if macd_cross_down and r > 55:                    # NEW: overbought drop
+        return SignalResult("SELL", 0.65, "Overbought MACD cross down", indicators)
+
+    # --- RELAXED SELL signals (0.60) ---
+    if downtrend and macd_bearish and r > 45:         # was r > 50
+        return SignalResult("SELL", 0.60, "Downtrend + MACD bearish", indicators)
+    if macd_bearish and r > 65 and not uptrend:       # NEW: overbought exit
+        return SignalResult("SELL", 0.60, "Overbought + MACD bearish", indicators)
 
     return SignalResult("HOLD", 0.0, "No confirmed signal", indicators)
